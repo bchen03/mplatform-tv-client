@@ -1,0 +1,92 @@
+// Use float for layout
+
+.main {
+    width: 100%;
+    background-color: cyan;
+}
+
+.panel {
+    float: left;
+    width: 20%;
+    margin: 1% .5% 1% 1%;
+    padding: .5%;
+    background-color: red;
+}
+
+.content {
+    float: right;
+    width: 77%;
+    margin: 1% 1% 1% .5%;
+}
+
+.top6 {
+    background-color: silver;
+}
+
+.chart {
+    width: 100%;
+    padding: 1%;
+    background-color: lightblue;
+}
+
+.grid {
+    width: 100%;
+    padding: 1%;
+    background-color: lightcoral;
+}
+
+.span-1 {
+    float: left;
+    width: 19%;
+    margin: .5%;
+    padding: .5%;
+    background-color: lightgreen;
+    text-align: center;
+}
+
+.span-2 {
+    float: left;
+    width: 39%;
+    margin: .5%;
+    padding: .5%;
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+}
+
+.cbg {
+    border: 1px solid silver;
+    background-color: #2196f3;
+}
+
+
+//
+img {
+    max-width: 100%;
+}
+
+// Create a container that maintains aspect ratio on resize (responsive)
+.contain {
+    width: 50%;
+    margin: 0 auto;
+}
+
+// padding is based on the width, even for padding-top/bottom, so xx% of whatever the width is (so height = xx% of width)
+.outer {
+    position: relative;
+    height: 0;
+    padding-bottom: 33%;    
+    //margin: 10%;
+}
+
+// match the inner container to the outer containers dimensions
+.inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+}
+
+
+

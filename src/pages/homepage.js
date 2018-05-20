@@ -1,88 +1,78 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Form from "react-jsonschema-form";
+
+//import '../css/homepage.scss';    // uses float
+import '../css/homepage2.scss';     // uses flexbox
 
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            apps: [
-                { 
-                    id: 1,
-                    name: 'Media Index'
-                },
-                { 
-                    id: 2,
-                    name: 'ACP'
-                },
-                { 
-                    id: 3,
-                    name: 'OLS'
-                },
-            ]
         }
-
-        this.change = this.change.bind(this);
-        this.error = this.error.bind(this);
-        this.submit = this.submit.bind(this);
-    }
-
-    change({ formData }) {
-        console.log("change: ", formData);
-    }
-
-    error(errors) {
-        console.log("errors: ", errors);
-    }
-
-    submit({ formData }) {
-        console.log("submit: ", formData);
     }
 
     render() {
-        const schema = {
-            title: "Todo",
-            type: "object",
-            required: ["title"],
-            properties: {
-              title: {type: "string", title: "Title", default: "A new task"},
-              done: {type: "boolean", title: "Done?", default: false}
-            }
-        };
-
         return (
             <React.Fragment>
-                <div className='container-fluid m-3'>
-                    <div className='row'>
-                        <div className='col-6 border rounded' style={{ backgroundColor: '#fafafa'}}>
-                            <Form schema={schema}
-                                onChange={this.change}
-                                onSubmit={this.submit}
-                                onError={this.error}>
-                                <button type='submit' style={{marginBottom: '20px'}}>Run</button>
-                            </Form>
+                <div className="main">
+                    <div className="panel">
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        <div>Panel</div>
+                        
+                    </div>
+                    <div className="content">
+                        <div className="top6">
+                            <div className="span-1 center">metrics</div>
+                            <div className="span-2 center">top 6 chart 1 top 6 chart 1 top 6 chart 1 top 6 chart 1</div>
+                            <div className="span-2 center">top 6 chart 2</div>
+                        </div>
+                        <div className="chart center">
+                            bubble chart<img src="../img/mplatform2.jpg" alt="bubble chart" />bubble chart
+                        </div>
+                        <div className="grid center">
+                            Grid
                         </div>
                     </div>
                 </div>
 
-                <div style={{ margin: "5px"}}>
-                    <AppBar apps={this.state.apps} />
+                <div className="clearfix" />
+
+                <div className="container inline-block-container">
+                    <div className="inline-block inline-block-1">Inline, Inline-block, Block</div>
+                    <div className="inline-block inline-block-2">Inline, Inline-block, Block</div>
+                    <div className="inline-block inline-block-3">Inline, Inline-block, Block</div>
+                    <div className="inline-block inline-block-4">Inline, Inline-block, Block</div>
                 </div>
 
-                <div className='container-fluid'>
-                    <div className='row'>
-                        <div className='cbg col'>
-                            One of three columns
-                        </div>
-                        <div className='col c2'>
-                            One of three columns
-                        </div>
-                        <div className='col c3'>
-                            One of three columns
-                        </div>    
-                    </div>            
+
+                {/* One way to do responsive resizing for video that is a fixed size */}
+                <div className="container intrinsic-ratio-container">
+                    <div className="video-container">
+                        <iframe width="640" height="360" src="https://www.youtube.com/embed/anvYeA1pWlk" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                    </div>
                 </div>
+
             </React.Fragment>
         );
     }

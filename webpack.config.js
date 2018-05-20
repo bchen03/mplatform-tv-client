@@ -71,12 +71,12 @@ var config = {
         publicPath: "/"
     },
     devServer: {
-        contentBase: DIST_DIR,
+        contentBase: SRC_DIR,   //DIST_DIR,
         compress: true,
         stats: "errors-only",   // Only show error messages
         open: true,             // Opens new browser window when running dev server for first time
         historyApiFallback: true,
-        port: 3001
+        port: 3002
     },
     module: {
         rules: [

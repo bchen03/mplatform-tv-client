@@ -13,7 +13,7 @@ import App from "./components/app";
 import 'mdbootstrap/css/bootstrap.min.css';
 import 'mdbootstrap/css/mdb.min.css';
 
-import './css/styles.scss';
+//import './css/styles.scss';
 
 // Add support for Redux DevTools extension 
 // Install Redux devtools for your browser first

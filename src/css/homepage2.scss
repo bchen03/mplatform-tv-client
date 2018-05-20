@@ -1,0 +1,190 @@
+// Use flexBox exclusively for layout
+
+// max-width allows the image to resize only up to its max size
+img {
+    max-width: 100%;
+}
+
+.main {
+    width: 100%;
+    background-color: cyan;
+}
+
+.panel {
+    margin: 1% .5% 1% 1%;
+    padding: .5%;
+    background-color: red;
+}
+
+.content {
+    margin: 1% 1% 1% .5%;
+}
+
+.top6 {
+    margin-bottom: 1%;
+}
+
+.chart {
+    background-color: lightblue;
+    margin-bottom: 1%;
+    overflow: hidden;
+}
+
+.grid {
+    background-color: lightcoral;
+    overflow: hidden;
+}
+
+.span-1 {
+    margin: .5%;
+    padding: .5%;
+    background-color: lightgreen;
+    overflow: hidden;
+}
+
+.span-2 {
+    margin: .5%;
+    padding: .5%;
+    background-color: lightgoldenrodyellow;
+    overflow: hidden;
+}
+
+.inline-block-container {
+    text-align: center;
+}
+
+.inline-block {
+    //display: inline;
+    display: inline-block;
+    //display: block;
+    width: 100px;   // inline = no, inline-block = yes
+    height: 100px;  // inline = no, inline-block = yes
+    margin: 15px;    // inline = no, inline-block = yes
+    padding: 15px;   // inline = sort of, padding is added but top position is moved up overlapping content above by padding amount, inline-block = yes
+}
+
+.inline-block-1 {
+    background-color: lightblue;
+
+}
+.inline-block-2 {
+    background-color: lemonchiffon;
+
+} 
+.inline-block-3 {
+    background-color: lightcoral;
+
+}
+.inline-block-4 {
+    background-color: lawngreen;
+}
+
+
+// "intrinsic ratios"
+// Create a container that maintains aspect ratio on resize (intrinsic ratios)
+div.intrinsic-ratio-container {
+    width: 30%;
+    margin: 20px auto;
+}
+
+// css padding is always based on the element's width (even for padding-top/bottom), 
+// so "padding-bottom: xx%" is the height as a percentage of width (aspect ratio)
+// The percentage can be calculated as: "height / width * 100"
+// For example, here's a iframe for a youtube video:
+//      <iframe width="640" height="360" src="https://www.youtube.com/embed/anvYeA1pWlk" />
+// So padding-bottom is: 360 / 640 * 100 = 56.25%
+div.video-container {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;    
+    // margin: 10%;
+}
+
+// match the inner container to the outer containers dimensions
+div.video-container > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    // background-color: red;
+}
+
+
+// apply styles when min-width >= 257px
+@media all and (min-width: 257px) {
+
+    .main {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        width: 100%;
+        background-color: cyan;
+    }
+
+    .panel {
+        flex: 1 1 20%;
+        // margin: 1% .5% 1% 1%;
+        // padding: .5%;
+        background-color: red;
+    }
+
+    .content {
+        flex: 1 1 77%;
+        // margin: 1% 1% 1% .5%;
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+    }
+
+    .top6 {
+        display: flex;
+        flex-flow: row wrap;
+        background-color: pink;
+
+        flex: 1 1 32%; 
+        // margin-bottom: 1%;
+    }
+
+    .chart {
+        background-color: lightblue;
+        flex: 1 1 32%; 
+        // margin-bottom: 1%;
+    }
+
+    .grid {
+        background-color: lightcoral;
+        flex: 1 1 31%; 
+    }
+
+    .span-1 {
+        flex: 1 1 19%;
+        // margin: .5%;
+        // padding: .5%;
+        background-color: lightgreen;
+    }
+
+    .span-2 {
+        flex: 1 1 39%;
+        // margin: .5%;
+        // padding: .5%;
+        background-color: lightgoldenrodyellow;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+.cbg {
+    border: 1px solid silver;
+    background-color: #2196f3;
+}
+
+
