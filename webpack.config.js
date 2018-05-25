@@ -98,14 +98,19 @@ var config = {
                 }
             },
             { 
-                //test: /\.(css|scss)$/,
-                test: /\.scss$/,    // With CSS modules support
-                // use: [           // This works
+                test: /\.(css|scss)$/,
+                include: [
+                    SRC_DIR
+                ],
+                exclude: [
+                    /node_modules/
+                ],
+                // use: [           // css-loader options on one line
                 //     "style-loader", 
                 //     "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap&-minimize", 
                 //     "sass-loader"
                 // ],
-                use: [              // 
+                use: [              // css-loader options individually
                     { 
                         loader: "style-loader" 
                     },
@@ -113,8 +118,10 @@ var config = {
                         loader: "css-loader",
                         options: {
                             sourceMap: true,
+                            // CSS modules support
                             modules: true,
                             localIdentName: "[local]___[hash:base64:5]"
+                            //localIdentName: "[name]__[local]___[hash:base64:5]"
                         }
                     },
                     {
@@ -135,20 +142,6 @@ var config = {
                 //     'sass-loader'
                 // ]
             },
-            {
-                test: /\.css$/,     // Without CSS modules support
-                loaders: [
-                  'style-loader',
-                  'css-loader'
-                ]
-            },
-            // {
-            //     test: /\.css$/,  // With CSS modules support
-            //     loaders: [
-            //       'style-loader',
-            //       'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap&-minimize'
-            //     ]
-            // },
             { 
                 test: /\.json$/, 
                 loader: 'json-loader' 

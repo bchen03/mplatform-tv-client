@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 //import '../css/homepage.scss';    // uses float
 import homestyles from '../css/homepage2.scss';     // uses flexbox
+console.log(homestyles);
+
 
 class HomePage extends React.Component {
     constructor(props) {
