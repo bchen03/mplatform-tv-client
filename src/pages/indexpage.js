@@ -1,0 +1,412 @@
+import React, { Component } from 'react';
+
+// React Bootstrap table
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+//import bootstyles from 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+
+//import logo from './logo.svg';
+
+// Without CSS modules support
+//import '../css/indexpage.scss';
+
+// With CSS modules support
+import indexstyles from '../css/indexpage.scss';
+console.log(indexstyles);
+
+import metricoptions from '../json/metricoptions.json';
+import metricoptions2 from '../json/metricoptions2.json';
+import chartoptions from '../json/chartoptions.json';
+import tabledata from '../json/tabledata.json';
+
+// The below imports work on the test app but not here, I get this error:
+// 'Warning: React.createElement: type is invalid -- expected a string (for built-in components) 
+// or a class/function (for composite components) but got: object.'
+//import * as HighChart from 'react-highcharts';
+
+// So I have to use 'require' instead of import
+const HighChart = require('react-highcharts'); 
+require('highcharts/js/highcharts-more')(HighChart.Highcharts);
+
+class IndexPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      // useDemo: true,
+      // demoType: "Individual",
+
+      // // Individual
+      // category: "Adults",
+      // range: "18-49",
+      // useAdvancedTargetAudience: false,
+
+      // account: "XAXIS US",
+      // advertiser: "Alfa",
+      // advancedTargetAudience: "CO_Alefa_Mar17",
+
+      // startDate: "",
+      // endDate: "",
+      // dayparts: [],
+
+      // markets: ["Albany, GA"],
+      // incomeBands: ["$0-$29K"],
+      // noOfAdults: [1],
+      // noOfChildren: [0],
+      // childZeroToSix: false,
+
+      metric1options: metricoptions,
+      metric2options: metricoptions2, 
+      chartoptions: chartoptions,
+      tabledata: tabledata
+    }
+
+    // this.columns = [
+    //   {
+    //     Header: "Network",
+    //     id: "network",
+    //     accessor: d => d.network
+    //   },
+    //   {
+    //     Header: "Concentration",
+    //     id: "concentration",
+    //     accessor: d => d.concentration
+    //   },
+    //   {
+    //     Header: "Affinity Index",
+    //     id: "affinity",
+    //     accessor: d => d.affinity
+    //   },
+    //   {
+    //     Header: "Reach",
+    //     id: "reach",
+    //     accessor: d => d.reach
+    //   },
+    //   {
+    //     Header: "GRP",
+    //     id: "grp",
+    //     accessor: d => d.grp
+    //   },
+    //   {
+    //     Header: "Wastage",
+    //     id: "wastage",
+    //     accessor: d => d.wastage
+    //   },
+    // ]
+  }
+
+  componentDidMount() {
+    // Force resize due to Top6 charts rendering outside of flex box
+    this.triggerResize();
+  }
+
+  triggerResize() {
+    // Trigger window resize function in javascript
+    // source path : http://codrate.com/questions/how-can-trigger-the-window-resize-event-manually-in-javascript
+    if (typeof (Event) === 'function') {
+        // modern browsers
+        window.dispatchEvent(new Event('resize'));
+    } else {
+        // This will be executed on old browsers and especially IE
+        var resizeEvent = window.document.createEvent('UIEvents');
+        resizeEvent.initUIEvent('resize', true, false, window, 0);
+        window.dispatchEvent(resizeEvent);
+    }
+  }
+
+  render() {
+    // Throws runtime error to test <ErrorBoundary>
+    // const obj = null;
+    // const a = obj.a;
+
+    return (
+      <div className={indexstyles.app}>
+        <Header />
+        <div className={indexstyles.main}>
+            <SelectionPanel />
+            <Content>
+                <Top6 metric1options={this.state.metric1options} metric2options={this.state.metric2options} />
+                <hr />
+                <Chart chartoptions={this.state.chartoptions} />
+                <Grid data={this.state.tabledata} columns={this.columns} />
+            </Content>
+        </div>          
+      </div>
+    );
+  }
+}
+
+function Header() {
+    return (
+        <header className={indexstyles.header}>
+        <ul>
+          <li id={indexstyles.insights}>Cross-media Insights</li>
+          <li id={indexstyles.planning}>Cross-media Planning</li>
+        </ul>
+      </header>
+    );
+}
+
+function SelectionPanel() {
+    return (
+      <aside className={indexstyles.panel}>
+        <div>
+          <input type="checkbox" id={indexstyles.udemo} name="usedemo" value="1" />
+          <label htmlFor={indexstyles.udemo}>Use Demographic</label>
+        </div>
+        <div>
+          <input type='radio' id={indexstyles.idemo} name='demo' value="individual" />
+          <label htmlFor={indexstyles.idemo}>Individual Demographics</label>          
+        </div>
+        <div>
+          <input type='radio' id={indexstyles.hdemo} name='demo' value="household" />
+          <label htmlFor={indexstyles.hdemo}>Household Demographics</label>          
+        </div>
+        <div>
+          <h4><strong>Cross-media Demographics</strong></h4>
+        </div>
+        <div>
+          <span>
+            <label htmlFor={indexstyles.category}>Category</label>          
+            <select id={indexstyles.category}> 
+              <option value='adults'>Adults</option> 
+              <option value='men'>Men</option> 
+              <option value='women'>Women</option> 
+              <option value='education'>Education</option> 
+            </select>
+          </span>
+          <span>
+          <label htmlFor={indexstyles.range}>Range</label>          
+            <select id={indexstyles.range}> 
+              <option value='1849'>18-49</option> 
+              <option value='2554'>25-54</option> 
+              <option value='65+'>65+</option> 
+            </select>
+          </span>
+        </div>
+        <div>
+          <input type='checkbox' id={indexstyles.ata} name='ata' value='true' />
+          <label htmlFor={indexstyles.ata}>Use Advanced Target Audience</label>          
+        </div>
+        <div>
+          <span>
+            <label htmlFor={indexstyles.startrange}>Date Range</label>          
+            <select id={indexstyles.startrange}> 
+              <option value=''>2017-04-18</option> 
+            </select>
+          </span>
+          <span>to</span>
+          <span>
+            <select id={indexstyles.endrange}> 
+              <option value=''>2017-04-24</option> 
+            </select>
+          </span>
+        </div>
+        <div>
+          <label htmlFor={indexstyles.daypartfilter}>Daypart Filter (Optional)</label>          
+          <select id={indexstyles.daypartfilter}> 
+            <option value=''>Daytime 9AM-4PM</option> 
+            <option value=''>Early Fringe 4-7PM</option> 
+            <option value=''>Prime Access 7-8PM</option> 
+            <option value=''>Prime 8-11PM</option> 
+          </select>
+        </div>
+        <div>
+          <button value="run">Run</button>
+        </div>
+        <hr />
+        <div className={indexstyles.helptext}>
+          <strong>GRP:</strong>&nbsp;
+          gross rating points, number of impressions as percentage of target audience
+        </div>
+        <div className={indexstyles.helptext}>
+          <strong>Wastage:</strong>&nbsp;
+          percentage of TV network audience that is not in target audience
+        </div>
+        <div className={indexstyles.helptext}>
+          <strong>Concentration:</strong>&nbsp;
+          percentage of TV network audience that is in target audience
+        </div>
+        <div className={indexstyles.helptext}>
+          <strong>Affinity Index:</strong>&nbsp;
+          reach into target audience by TV network relative to national audience
+        </div>
+        <div className={indexstyles.helptext}>
+          <strong>Net Reach:</strong>&nbsp;
+          deduplicated reach into target audience by TV network
+        </div>
+      </aside>
+    )
+}
+
+function Content(props) {
+  return <div className={indexstyles.content}>{props.children}</div>
+}
+
+class Top6 extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className={indexstyles.top6}>
+        <div className={indexstyles.top6Metrics}>
+          <div>
+            <label htmlFor={indexstyles.metric1}><strong>Select first metric:</strong></label>
+          </div>
+          <div>
+            <select id={indexstyles.metric1} className={indexstyles.metric}> 
+              <option value='reach'>Net Reach</option> 
+              <option value='grp'>GRP</option> 
+            </select>
+          </div>
+          <div>
+            <label htmlFor={indexstyles.metric2}><strong>Select second metric:</strong></label>
+          </div>
+          <div>
+            <select id={indexstyles.metric2} className={indexstyles.metric} defaultValue='affinity'> 
+              <option value='wastage'>Wastage</option> 
+              <option value='concentration'>Concentration</option> 
+              <option value='affinity'>Affinity Index</option> 
+            </select>
+          </div>
+          <div>
+            <label htmlFor={indexstyles.metric3}><strong>Network filter:</strong></label>
+          </div>
+          <div>
+            <select id={indexstyles.metric3} className={indexstyles.metric}>
+              <option value=""></option> 
+              <option value='A&E'>A&E</option> 
+              <option value='ABC'>ABC</option> 
+              <option value='AMC'>AMC</option> 
+              <option value='American Heroes Channel'>American Heroes Channel</option> 
+            </select>
+          </div>
+        </div>
+        <div className={indexstyles.top6Metricby1}>
+          <div className={indexstyles.top6Metricchart}>
+            <div className={indexstyles.top6Metricchartwrapper}>
+              <HighChart config={this.props.metric1options} />
+              {/* top 6 metrics 1 */}
+            </div>
+          </div>
+        </div>
+        <div className={indexstyles.top6Metricby2}>
+          <div className={indexstyles.top6Metricchart}>
+            <div className={indexstyles.top6Metricchartwrapper}>
+              <HighChart config={this.props.metric2options} />
+              {/* top 6 metrics 2 */}
+            </div>
+          </div>
+        </div>
+      </div>
+    ); 
+  }
+}
+
+class Chart extends React.Component {
+  render() {
+    return (
+      <div className={indexstyles.chart}>
+        <div className={indexstyles.chartwrapper}>
+          <HighChart config={this.props.chartoptions} />
+          {/* <span>Chart</span> */}
+        </div>
+      </div>
+    );
+  }
+}
+
+class Grid extends React.Component {
+  constructor(props) {
+      super(props);
+
+      this.showsTotal = this.showsTotal.bind(this);
+    }
+
+    showsTotal(start, to, total) {
+      return (
+        <p style={ { color: 'blue' } }>
+          Showing { start } to { to } of { total } entries
+        </p>
+      );
+    }
+
+    render() {
+      const options = {
+        sizePerPageList: [ 
+          { text: '5', value: 5 }, 
+          { text: '10', value: 10 },  
+          { text: '25', value: 25 },  
+          //{ text: 'All', value: this.props.data.length } 
+        ],
+        sizePerPage: 5,
+        pageStartIndex: 1,
+
+        paginationPosition: "bottom" //,
+        //paginationShowsTotal: this.showsTotal
+      }
+
+      return (
+        <div className={indexstyles.grid}>
+          <div className={indexstyles.gridwrapper}>
+            <BootstrapTable data={this.props.data} options={options} striped={true} hover={true} pagination>
+              <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>ID</TableHeaderColumn>
+              <TableHeaderColumn dataField="network" dataAlign="center" dataSort={true}>Network</TableHeaderColumn>
+              <TableHeaderColumn dataField="concentration" dataAlign="center" dataSort={true}>Concentration</TableHeaderColumn>
+              <TableHeaderColumn dataField="affinity" dataAlign="center" dataSort={true}>Affinity</TableHeaderColumn>
+              <TableHeaderColumn dataField="reach" dataAlign="center" dataSort={true}>Reach</TableHeaderColumn>
+              <TableHeaderColumn dataField="grp" dataAlign="center" dataSort={true}>GRP</TableHeaderColumn>
+              <TableHeaderColumn dataField="wastage" dataAlign="center" dataSort={true}>Wastage</TableHeaderColumn>
+            </BootstrapTable>
+            {/* <ReactTable defaultPageSize={5} data={this.props.data} columns={this.props.columns} /> */}
+            {/* Grid of metric1 and metric2 */}
+          </div>
+        </div>
+    
+      );
+    }
+}
+
+
+// ErrorBoundary
+// Catches runtime errors in child components (this.props.children) in ctr, lifecycle, and render methods 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      hasError: false,  
+      error: null,
+      info: null
+    };
+  }
+
+  componentDidCatch(error, info) {
+    console.log("==> componentDidCatch called, error: ", error, ", info: ", info)
+
+    // Display fallback UI
+    this.setState({ hasError: true, error: error, info: info });
+    // You can also log the error to an error reporting service
+    //logErrorToMyService(error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return (
+        <div>
+          <h1>Something went wrong.</h1>
+          <h3>{this.state.error.toString()}</h3>
+        </div>
+      );
+    }
+    else {
+      return this.props.children;
+    }
+  }
+}
+
+
+export default IndexPage;
+export { ErrorBoundary };

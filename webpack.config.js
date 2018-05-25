@@ -98,8 +98,31 @@ var config = {
                 }
             },
             { 
-                test: /\.(css|scss)$/, 
-                use: ["style-loader", "css-loader", "sass-loader"],
+                //test: /\.(css|scss)$/,
+                test: /\.scss$/,    // With CSS modules support
+                // use: [           // This works
+                //     "style-loader", 
+                //     "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap&-minimize", 
+                //     "sass-loader"
+                // ],
+                use: [              // 
+                    { 
+                        loader: "style-loader" 
+                    },
+                    { 
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
+                            modules: true,
+                            localIdentName: "[local]___[hash:base64:5]"
+                        }
+                    },
+                    {
+                        loader: "sass-loader"
+                    }
+                ],
+                //test: /\.scss$/,  // Without CSS modules support
+                //use: ["style-loader", "css-loader", "sass-loader"],
                 // use: ExtractTextPlugin.extract({
                 //     fallback: "style-loader",
                 //     use: ["css-loader", "sass-loader"],
@@ -111,6 +134,24 @@ var config = {
                 //     //'postcss-loader',
                 //     'sass-loader'
                 // ]
+            },
+            {
+                test: /\.css$/,     // Without CSS modules support
+                loaders: [
+                  'style-loader',
+                  'css-loader'
+                ]
+            },
+            // {
+            //     test: /\.css$/,  // With CSS modules support
+            //     loaders: [
+            //       'style-loader',
+            //       'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap&-minimize'
+            //     ]
+            // },
+            { 
+                test: /\.json$/, 
+                loader: 'json-loader' 
             },
             {
                 test: /\.(gif|jpg|png|svg)$/, 

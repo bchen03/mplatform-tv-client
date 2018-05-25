@@ -1,0 +1,111 @@
+[
+    {
+        "id": 1,
+        "network": "Azteca",
+        "concentration": 76.99,
+        "affinity": 124.4,
+        "reach": 1.48,
+        "grp": 1.49,
+        "wastage": 23.01
+    },
+    {
+        "id": 2,
+        "network": "TeenNick",
+        "concentration": 76.71,
+        "affinity": 123.9,
+        "reach": 2.47,
+        "grp": 2.50,
+        "wastage": 23.29
+    },
+    {
+        "id": 3,
+        "network": "Sprout",
+        "concentration": 75.71,
+        "affinity": 122.3,
+        "reach": 1.18,
+        "grp": 1.18,
+        "wastage": 24.29
+    },
+    {
+        "id": 4,
+        "network": "Nicktoons",
+        "concentration": 75.12,
+        "affinity": 121.3,
+        "reach": 2.73,
+        "grp": 2.77,
+        "wastage": 24.88
+    },
+    {
+        "id": 5,
+        "network": "FOX Deportes",
+        "concentration": 74.94,
+        "affinity": 121.1,
+        "reach": 2.02,
+        "grp": 2.04,
+        "wastage": 25.06
+    },
+    {
+        "id": 6,
+        "network": "Disney XD",
+        "concentration": 74.21,
+        "affinity": 119.9,
+        "reach": 2.70,
+        "grp": 2.74,
+        "wastage": 25.79
+    },
+    {
+        "id": 7,
+        "network": "Smoke",
+        "concentration": 76.99,
+        "affinity": 124.4,
+        "reach": 1.48,
+        "grp": 1.49,
+        "wastage": 23.01
+    },
+    {
+        "id": 8,
+        "network": "PartyPoker",
+        "concentration": 76.71,
+        "affinity": 123.9,
+        "reach": 2.47,
+        "grp": 2.50,
+        "wastage": 23.29
+    },
+    {
+        "id": 9,
+        "network": "Teabag",
+        "concentration": 75.71,
+        "affinity": 122.3,
+        "reach": 1.18,
+        "grp": 1.18,
+        "wastage": 24.29
+    },
+    {
+        "id": 10,
+        "network": "Whatsup",
+        "concentration": 75.12,
+        "affinity": 121.3,
+        "reach": 2.73,
+        "grp": 2.77,
+        "wastage": 24.88
+    },
+    {
+        "id": 11,
+        "network": "Breibart",
+        "concentration": 74.94,
+        "affinity": 121.1,
+        "reach": 2.02,
+        "grp": 2.04,
+        "wastage": 25.06
+    },
+    {
+        "id": 12,
+        "network": "HolySmokes",
+        "concentration": 74.21,
+        "affinity": 119.9,
+        "reach": 2.70,
+        "grp": 2.74,
+        "wastage": 25.79
+    }
+    
+]

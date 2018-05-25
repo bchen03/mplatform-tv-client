@@ -35,25 +35,25 @@ img {
     overflow: hidden;
 }
 
-.span-1 {
+.span1 {
     margin: .5%;
     padding: .5%;
     background-color: lightgreen;
     overflow: hidden;
 }
 
-.span-2 {
+.span2 {
     margin: .5%;
     padding: .5%;
     background-color: lightgoldenrodyellow;
     overflow: hidden;
 }
 
-.inline-block-container {
+.inlineBlockContainer {
     text-align: center;
 }
 
-.inline-block {
+.inlineBlock {
     //display: inline;
     display: inline-block;
     //display: block;
@@ -63,26 +63,26 @@ img {
     padding: 15px;   // inline = sort of, padding is added but top position is moved up overlapping content above by padding amount, inline-block = yes
 }
 
-.inline-block-1 {
+.inlineBlock1 {
     background-color: lightblue;
 
 }
-.inline-block-2 {
+.inlineBlock2 {
     background-color: lemonchiffon;
 
 } 
-.inline-block-3 {
+.inlineBlock3 {
     background-color: lightcoral;
 
 }
-.inline-block-4 {
+.inlineBlock4 {
     background-color: lawngreen;
 }
 
 
 // "intrinsic ratios"
 // Create a container that maintains aspect ratio on resize (intrinsic ratios)
-div.intrinsic-ratio-container {
+div.intrinsicRatioContainer {
     width: 30%;
     margin: 20px auto;
 }
@@ -93,7 +93,7 @@ div.intrinsic-ratio-container {
 // For example, here's a iframe for a youtube video:
 //      <iframe width="640" height="360" src="https://www.youtube.com/embed/anvYeA1pWlk" />
 // So padding-bottom is: 360 / 640 * 100 = 56.25%
-div.video-container {
+div.videoContainer {
     position: relative;
     height: 0;
     padding-bottom: 56.25%;    
@@ -101,7 +101,7 @@ div.video-container {
 }
 
 // match the inner container to the outer containers dimensions
-div.video-container > iframe {
+div.videoContainer > iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -118,7 +118,8 @@ div.video-container > iframe {
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-start;
-        align-content: stretch;
+        // align-content: space-between;
+        align-items: flex-start;
         width: 100%;
         background-color: cyan;
     }
@@ -131,13 +132,14 @@ div.video-container > iframe {
     }
 
     .content {
-        flex: 1 1 77%;
+        flex: 1 1 76%;
         // margin: 1% 1% 1% .5%;
 
         display: flex;
         flex-flow: column nowrap;
         justify-content: flex-start;
-        align-content: stretch;
+        // align-content: flex-end;
+        align-items: stretch;
     }
 
     .top6 {
@@ -160,14 +162,14 @@ div.video-container > iframe {
         flex: 1 1 31%; 
     }
 
-    .span-1 {
+    .span1 {
         flex: 1 1 19%;
         // margin: .5%;
         // padding: .5%;
         background-color: lightgreen;
     }
 
-    .span-2 {
+    .span2 {
         flex: 1 1 39%;
         // margin: .5%;
         // padding: .5%;

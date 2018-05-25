@@ -12,6 +12,7 @@ import {
 
 import LoginPage from "../pages/loginpage";
 import HomePage from "../pages/homepage";
+import IndexPage from "../pages/indexpage";
 
 //import {MessageHoc, ColorHoc, PaymentView} from './recompose';
 
@@ -22,6 +23,7 @@ const App = (props) => {
                 <Switch>
                     <Route exact path="/" component={LoginPage}/>
                     <Route path="/home" component={HomePage}/>
+                    <Route path="/index" component={IndexPage}/>
                     <Redirect to="/" />
                 </Switch>
             </div>

@@ -18,7 +18,7 @@ import 'mdbootstrap/css/mdb.min.css';
 // Add support for Redux DevTools extension 
 // Install Redux devtools for your browser first
 // https://github.com/zalmoxisus/redux-devtools-extension#usage
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Redux store
 // const store = createStore(

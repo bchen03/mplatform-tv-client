@@ -1,0 +1,220 @@
+{
+    "chart": {
+      "type": "bubble",
+      "plotBorderWidth": 1,
+      "zoomType": "xy",
+      "height": 400
+    },
+     "legend": {
+         "enabled": false
+     },
+     "title": {
+         "text": "All Networks Net Reach vs Affinity Index"
+     },
+     "subtitle": {
+         "text": "<span style='color: #00c0ef'>Total Audience 71,402,088 households</span>"
+     },
+     "xAxis": {
+         "gridLineWidth": 0,
+         "title": {
+             "text": "Affinity Index"
+         },
+         "labels": {
+             "format": "{value}"
+         },
+         "pplotLines": [{
+             "color": "black",
+             "dashStyle": "dot",
+             "width": 2,
+             "value": 65,
+             "label": {
+                 "rotation": 0,
+                 "y": 15,
+                 "style": {
+                     "fontStyle": "italic"
+                 },
+                 "text": "Safe fat intake 65g/day"
+             },
+             "zIndex": 3
+         }]
+     },
+     "yAxis": {
+         "startOnTick": false,
+         "endOnTick": false,
+         "title": {
+             "text": "Net Reach"
+         },
+         "labels": {
+             "format": "{value}"
+         },
+         "maxPadding": 0.2,
+         "pplotLines": [{
+             "color": "black",
+             "dashStyle": "dot",
+             "width": 2,
+             "value": 50,
+             "label": {
+                 "align": "right",
+                 "style": {
+                     "fontStyle": "italic"
+                 },
+                 "text": "Safe sugar intake 50g/day",
+                 "x": -10
+             },
+             "zIndex": 3
+         }]
+     },
+     "tooltip": {
+         "useHTML": true,
+         "headerFormat": "<table>",
+         "pointFormat": "<tr><th colspan='2'><h3>{point.network}</h3></th></tr><tr><th>concentration:</th><td>{point.concentration}g</td></tr><tr><th>affinity index:</th><td>{point.affinity}g</td></tr><tr><th>net reach:</th><td>{point.reach}%</td></tr>",
+         "footerFormat": "</table>",
+         "followPointer": true
+     },
+     "pplotOptions": {
+         "series": {
+             "dataLabels": {
+                 "enabled": true,
+                 "format": "{point.name}"
+             }
+         }
+     },
+     "series": [{
+         "data": [
+            {
+                "id": 1,
+                "network": "Azteca",
+                "concentration": 76.99,
+                "affinity": 124.4,
+                "reach": 1.48,
+                "grp": 1.49,
+                "wastage": 23.01,
+                "x": 124.4,
+                "y": 1.48 
+            },
+            {
+                "id": 2,
+                "network": "TeenNick",
+                "concentration": 76.71,
+                "affinity": 123.9,
+                "reach": 2.47,
+                "grp": 2.50,
+                "wastage": 23.29,
+                "x": 123.9,
+                "y": 2.47 
+            },
+            {
+                "id": 3,
+                "network": "Sprout",
+                "concentration": 75.71,
+                "affinity": 122.3,
+                "reach": 1.18,
+                "grp": 1.18,
+                "wastage": 24.29,
+                "x": 122.3,
+                "y": 1.18 
+            },
+            {
+                "id": 4,
+                "network": "Nicktoons",
+                "concentration": 75.12,
+                "affinity": 121.3,
+                "reach": 2.73,
+                "grp": 2.77,
+                "wastage": 24.88,
+                "x": 121.3,
+                "y": 2.73 
+            },
+            {
+                "id": 5,
+                "network": "FOX Deportes",
+                "concentration": 74.94,
+                "affinity": 121.1,
+                "reach": 2.02,
+                "grp": 2.04,
+                "wastage": 25.06,
+                "x": 121.1,
+                "y": 2.02 
+            },
+            {
+                "id": 6,
+                "network": "Disney XD",
+                "concentration": 74.21,
+                "affinity": 119.9,
+                "reach": 2.70,
+                "grp": 2.74,
+                "wastage": 25.79,
+                "x": 119.9,
+                "y": 2.70 
+            },
+            {
+                "id": 7,
+                "network": "Smoke",
+                "concentration": 76.99,
+                "affinity": 134.4,
+                "reach": 1.48,
+                "grp": 1.49,
+                "wastage": 23.01,
+                "x": 134.4,
+                "y": 1.49 
+            },
+            {
+                "id": 8,
+                "network": "PartyPoker",
+                "concentration": 76.71,
+                "affinity": 125.9,
+                "reach": 2.47,
+                "grp": 2.50,
+                "wastage": 23.29,
+                "x": 125.9,
+                "y": 2.47 
+            },
+            {
+                "id": 9,
+                "network": "Teabag",
+                "concentration": 75.71,
+                "affinity": 126.3,
+                "reach": 1.18,
+                "grp": 1.18,
+                "wastage": 24.29,
+                "x": 126.3,
+                "y": 1.18 
+            },
+            {
+                "id": 10,
+                "network": "Whatsup",
+                "concentration": 75.12,
+                "affinity": 121.3,
+                "reach": 12.73,
+                "grp": 2.77,
+                "wastage": 24.88,
+                "x": 121.3,
+                "y": 12.73 
+            },
+            {
+                "id": 11,
+                "network": "Breibart",
+                "concentration": 74.94,
+                "affinity": 116.1,
+                "reach": 48.02,
+                "grp": 22.04,
+                "wastage": 5.06,
+                "x": 116.1,
+                "y": 48.02 
+            },
+            {
+                "id": 12,
+                "network": "HolySmokes",
+                "concentration": 74.21,
+                "affinity": 114.9,
+                "reach": 32.70,
+                "grp": 2.74,
+                "wastage": 25.79,
+                "x": 114.9,
+                "y": 32.70 
+            }
+        ]
+     }]
+   }
+  
+  
