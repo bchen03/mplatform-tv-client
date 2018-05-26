@@ -7,6 +7,8 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 import { triggerResize } from '../utils/window';
+import { setChart, setSeries } from '../utils/chart';
+
 
 //import logo from './logo.svg';
 
@@ -23,7 +25,6 @@ import chartoptions from '../json/chartoptions.json';
 import tabledata from '../json/tabledata.json';
 
 console.log("chartoptions: ", chartoptions);
-
 
 // The below imports work on the test app but not here, I get this error:
 // 'Warning: React.createElement: type is invalid -- expected a string (for built-in components) 
@@ -115,29 +116,172 @@ class IndexPage extends Component {
         // const a = obj.a;
 
         return (
-        <div className={indexstyles.app}>
-            <Header />
-            <div className={indexstyles.main}>
-                <SelectionPanel />
-                <Content>
-                    <Top6 
-                        metric1={this.state.metric1} 
-                        metric2={this.state.metric2} 
-                        metric1chart={this.state.metric1chart} 
-                        metric2chart={this.state.metric2chart} />
-                    <hr />
-                    <Chart 
-                        metric1={this.state.metric1} 
-                        metric2={this.state.metric2} 
-                        chartoptions={this.state.chartoptions} />
-                    <Grid 
-                        metric1={this.state.metric1} 
-                        metric2={this.state.metric2} 
-                        data={this.state.tabledata} 
-                        columns={this.columns} />
-                </Content>
-            </div>          
-        </div>
+            <div className={indexstyles.app}>
+                <Header />
+                <div className={indexstyles.main}>
+                    <SelectionPanel />
+                    <Content>
+                        <Top6 
+                            metric1={this.state.metric1} 
+                            metric2={this.state.metric2} 
+                            metric1chart={this.state.metric1chart} 
+                            metric2chart={this.state.metric2chart} />
+                        <hr />
+                        <Chart 
+                            metric1={this.state.metric1} 
+                            metric2={this.state.metric2} 
+                            chartoptions={this.state.chartoptions} />
+                        <Grid 
+                            metric1={this.state.metric1} 
+                            metric2={this.state.metric2} 
+                            data={this.state.tabledata} 
+                            columns={this.columns} />
+                        {/* TODO: Test chart */}
+                        <TestChart />
+
+                    </Content>
+                </div>          
+            </div>
+        );
+    }
+}
+
+class TestChart extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.series = [
+            {
+                "id": 1,
+                "network": "Azteca",
+                "concentration": 76.99,
+                "affinity": 124.4,
+                "reach": 1.48,
+                "grp": 1.49,
+                "wastage": 23.01
+            },
+            {
+                "id": 2,
+                "network": "TeenNick",
+                "concentration": 76.71,
+                "affinity": 123.9,
+                "reach": 2.47,
+                "grp": 2.50,
+                "wastage": 23.29
+            },
+            {
+                "id": 3,
+                "network": "Sprout",
+                "concentration": 75.71,
+                "affinity": 122.3,
+                "reach": 1.18,
+                "grp": 1.18,
+                "wastage": 24.29
+            },
+            {
+                "id": 4,
+                "network": "Nicktoons",
+                "concentration": 75.12,
+                "affinity": 121.3,
+                "reach": 2.73,
+                "grp": 2.77,
+                "wastage": 24.88
+            },
+            {
+                "id": 5,
+                "network": "FOX Deportes",
+                "concentration": 74.94,
+                "affinity": 121.1,
+                "reach": 2.02,
+                "grp": 2.04,
+                "wastage": 25.06
+            },
+            {
+                "id": 6,
+                "network": "Disney XD",
+                "concentration": 74.21,
+                "affinity": 119.9,
+                "reach": 2.70,
+                "grp": 2.74,
+                "wastage": 25.79
+            },
+            {
+                "id": 7,
+                "network": "Smoke",
+                "concentration": 76.99,
+                "affinity": 134.4,
+                "reach": 1.48,
+                "grp": 1.49,
+                "wastage": 23.01
+            },
+            {
+                "id": 8,
+                "network": "PartyPoker",
+                "concentration": 76.71,
+                "affinity": 125.9,
+                "reach": 2.47,
+                "grp": 2.50,
+                "wastage": 23.29
+            },
+            {
+                "id": 9,
+                "network": "Teabag",
+                "concentration": 75.71,
+                "affinity": 126.3,
+                "reach": 1.18,
+                "grp": 1.18,
+                "wastage": 24.29
+            },
+            {
+                "id": 10,
+                "network": "Whatsup",
+                "concentration": 75.12,
+                "affinity": 121.3,
+                "reach": 12.73,
+                "grp": 2.77,
+                "wastage": 24.88
+            },
+            {
+                "id": 11,
+                "network": "Breibart",
+                "concentration": 74.94,
+                "affinity": 116.1,
+                "reach": 48.02,
+                "grp": 22.04,
+                "wastage": 5.06
+            },
+            {
+                "id": 12,
+                "network": "HolySmokes",
+                "concentration": 74.21,
+                "affinity": 114.9,
+                "reach": 32.70,
+                "grp": 2.74,
+                "wastage": 25.79
+            }
+        ];
+
+        this.chartOptions = 
+            setChart(
+                "All Networks",
+                "Net Reach", 
+                "Affinity Index", 
+                setSeries(
+                    "affinity", 
+                    "reach", 
+                    this.series));
+
+        console.log("Chart Options: ", this.chartOptions);
+    }
+    
+    render() {
+        return (
+            <div className={indexstyles.chart}>
+                <div className={indexstyles.chartwrapper}>
+                    <HighChart config={this.chartOptions} />
+                    {/* <span>Chart</span> */}
+                </div>
+            </div>
         );
     }
 }

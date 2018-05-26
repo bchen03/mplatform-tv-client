@@ -97,14 +97,38 @@ var config = {
                     ] 
                 }
             },
+            // {
+            //     test: /\.css$/,
+            //     include: [
+            //         SRC_DIR
+            //     ],
+            //     // use: [ "style-loader", "css-loader" ] 
+            //     use: [              // css-loader options individually
+            //         { 
+            //             loader: "style-loader" 
+            //         },
+            //         { 
+            //             loader: "css-loader",
+            //             options: {
+            //                 sourceMap: true,
+            //                 // CSS modules support
+            //                 modules: true,
+            //                 localIdentName: "[local]___[hash:base64:5]"
+            //                 //localIdentName: "[name]__[local]___[hash:base64:5]"
+            //             }
+            //         }
+            //     ]
+            // },
+            {
+                test: /\.css$/,
+                // can't include/exclude, won't compile
+                use: [ "style-loader", "css-loader" ] 
+            },
             { 
-                test: /\.(css|scss)$/,
-                include: [
-                    SRC_DIR
-                ],
-                exclude: [
-                    /node_modules/
-                ],
+                test: /\.scss$/,  
+                // test: /\.(css|scss)$/,
+                include: SRC_DIR,
+                exclude: /node_modules/,
                 // use: [           // css-loader options on one line
                 //     "style-loader", 
                 //     "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap&-minimize", 
@@ -127,7 +151,7 @@ var config = {
                     {
                         loader: "sass-loader"
                     }
-                ],
+                ]
                 //test: /\.scss$/,  // Without CSS modules support
                 //use: ["style-loader", "css-loader", "sass-loader"],
                 // use: ExtractTextPlugin.extract({
