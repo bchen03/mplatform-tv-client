@@ -69,7 +69,30 @@ const setChart = (networks, metric1, metric2, series) => {
            "tooltip": {
                "useHTML": true,
                "headerFormat": "<table>",
-               "pointFormat": "<tr><th colspan='2'><h3>{point.network}</h3></th></tr><tr><th>concentration:</th><td>{point.concentration}g</td></tr><tr><th>affinity index:</th><td>{point.affinity}g</td></tr><tr><th>net reach:</th><td>{point.reach}%</td></tr>",
+               "pointFormat": 
+                    `<tr>
+                        <th colspan='2'><h3>{point.network}</h3></th>
+                    </tr>
+                    <tr>
+                        <th>concentration:</th>
+                        <td>{point.concentration}g</td>
+                    </tr>
+                    <tr>
+                        <th>affinity index:</th>
+                        <td>{point.affinity}g</td>
+                    </tr>
+                    <tr>
+                        <th>net reach:</th>
+                        <td>{point.reach}%</td>
+                    </tr>
+                    <tr>
+                        <th>grp:</th>
+                        <td>{point.grp}%</td>
+                    </tr>
+                    <tr>
+                        <th>wastage:</th>
+                        <td>{point.wastage}%</td>
+                    </tr>`,
                "footerFormat": "</table>",
                "followPointer": true
            },
@@ -85,9 +108,9 @@ const setChart = (networks, metric1, metric2, series) => {
     });
 }  
   
-const setSeries = (xName, yName, series) => {
+const setSeries = (metric1, metric2, series) => {
     const results = series.map(item => {
-        return Object.assign({}, item, { x: item[xName], y: item[yName] })
+        return Object.assign({}, item, { x: item[metric2], y: item[metric1] })
         // return { ...item, x: item[xName], y: item[yName] };
     });
 

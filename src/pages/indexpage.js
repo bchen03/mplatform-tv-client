@@ -71,43 +71,58 @@ class IndexPage extends Component {
             tabledata: tabledata
         }
 
-        // this.columns = [
-        //   {
-        //     Header: "Network",
-        //     id: "network",
-        //     accessor: d => d.network
-        //   },
-        //   {
-        //     Header: "Concentration",
-        //     id: "concentration",
-        //     accessor: d => d.concentration
-        //   },
-        //   {
-        //     Header: "Affinity Index",
-        //     id: "affinity",
-        //     accessor: d => d.affinity
-        //   },
-        //   {
-        //     Header: "Reach",
-        //     id: "reach",
-        //     accessor: d => d.reach
-        //   },
-        //   {
-        //     Header: "GRP",
-        //     id: "grp",
-        //     accessor: d => d.grp
-        //   },
-        //   {
-        //     Header: "Wastage",
-        //     id: "wastage",
-        //     accessor: d => d.wastage
-        //   },
-        // ]
+        this.columns = [
+          {
+            Header: "Network",
+            id: "network",
+            accessor: d => d.network
+          },
+          {
+            Header: "Concentration",
+            id: "concentration",
+            accessor: d => d.concentration
+          },
+          {
+            Header: "Affinity Index",
+            id: "affinity",
+            accessor: d => d.affinity
+          },
+          {
+            Header: "Reach",
+            id: "reach",
+            accessor: d => d.reach
+          },
+          {
+            Header: "GRP",
+            id: "grp",
+            accessor: d => d.grp
+          },
+          {
+            Header: "Wastage",
+            id: "wastage",
+            accessor: d => d.wastage
+          },
+        ]
+
+        this.updateMetric1 = this.updateMetric1.bind(this);
+        this.updateMetric2 = this.updateMetric2.bind(this);
     }
 
     componentDidMount() {
         // Force resize due to Top6 charts rendering outside of flex box
         triggerResize();
+    }
+
+    updateMetric1(val) {
+        this.setState({
+            metric1: val
+        });
+    }
+
+    updateMetric2(val) {
+        this.setState({
+            metric2: val
+        });
     }
 
     render() {
@@ -125,20 +140,21 @@ class IndexPage extends Component {
                             metric1={this.state.metric1} 
                             metric2={this.state.metric2} 
                             metric1chart={this.state.metric1chart} 
-                            metric2chart={this.state.metric2chart} />
+                            metric2chart={this.state.metric2chart}
+                            onUpdate1={this.updateMetric1} 
+                            onUpdate2={this.updateMetric2} />
                         <hr />
-                        <Chart 
+                        {/* <Chart 
                             metric1={this.state.metric1} 
                             metric2={this.state.metric2} 
-                            chartoptions={this.state.chartoptions} />
+                            chartoptions={this.state.chartoptions} /> */}
+                        {/* TODO: Test chart */}
+                        <TestChart metric1={this.state.metric1} metric2={this.state.metric2} />
                         <Grid 
                             metric1={this.state.metric1} 
                             metric2={this.state.metric2} 
                             data={this.state.tabledata} 
                             columns={this.columns} />
-                        {/* TODO: Test chart */}
-                        <TestChart />
-
                     </Content>
                 </div>          
             </div>
@@ -260,25 +276,27 @@ class TestChart extends React.Component {
                 "wastage": 25.79
             }
         ];
-
-        this.chartOptions = 
-            setChart(
-                "All Networks",
-                "Net Reach", 
-                "Affinity Index", 
-                setSeries(
-                    "affinity", 
-                    "reach", 
-                    this.series));
-
-        console.log("Chart Options: ", this.chartOptions);
     }
     
     render() {
+        console.log("TestChart metric1: ", this.props.metric1, ", metric2: ", this.props.metric2, ", series: ", this.series);
+
+        const chartOptions = 
+            setChart(
+                "All Networks",
+                this.props.metric1, 
+                this.props.metric2, 
+                setSeries(
+                    this.props.metric1, 
+                    this.props.metric2, 
+                    this.series));
+
+        console.log("TestChart updated chart options: ", chartOptions);
+
         return (
             <div className={indexstyles.chart}>
                 <div className={indexstyles.chartwrapper}>
-                    <HighChart config={this.chartOptions} />
+                    <HighChart config={chartOptions} />
                     {/* <span>Chart</span> */}
                 </div>
             </div>
@@ -409,7 +427,11 @@ class Top6 extends React.Component {
                     <label htmlFor={indexstyles.metric1}><strong>Select first metric:</strong></label>
                 </div>
                 <div>
-                    <select id={indexstyles.metric1} className={indexstyles.metric} defaultValue={this.props.metric1}> 
+                    <select 
+                        id={indexstyles.metric1} 
+                        className={indexstyles.metric} 
+                        value={this.props.metric1} 
+                        onChange={evt => this.props.onUpdate1(evt.target.value)}> 
                     <option value='reach'>Net Reach</option> 
                     <option value='grp'>GRP</option> 
                     </select>
@@ -418,7 +440,11 @@ class Top6 extends React.Component {
                     <label htmlFor={indexstyles.metric2}><strong>Select second metric:</strong></label>
                 </div>
                 <div>
-                    <select id={indexstyles.metric2} className={indexstyles.metric} defaultValue={this.props.metric2}> 
+                    <select 
+                        id={indexstyles.metric2} 
+                        className={indexstyles.metric} 
+                        value={this.props.metric2}
+                        onChange={evt => this.props.onUpdate2(evt.target.value)}> 
                     <option value='wastage'>Wastage</option> 
                     <option value='concentration'>Concentration</option> 
                     <option value='affinity'>Affinity Index</option> 
