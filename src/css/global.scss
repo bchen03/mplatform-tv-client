@@ -1,0 +1,10 @@
+// :global {
+//    @import '~react-bootstrap-table/css/react-bootstrap-table';
+//    @import '../../node_modules/react-bootstrap-table/css/react-bootstrap-table.css';
+// }
+
+.someglobal {
+    .someinnerglobal {
+        border: 2px solid black;
+    }
+}

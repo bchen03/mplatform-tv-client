@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import bootstyles from 'mdbootstrap/css/bootstrap.min.css';
+console.log("mdbinput bootstyles: ", bootstyles);
+import mdbstyles from 'mdbootstrap/css/mdb.min.css';
+console.log("mdbinput mdbstyles: ", mdbstyles);
+
+
 // Component work-around for a bug in MDB inputs where 
 // label doesn't move up when input gets focus or stay
 // up when there's a value in the input field 
@@ -36,20 +42,46 @@ class MdbInput extends React.Component {
     }
 
     activeFocus() {
+        //this.setState({className: mdbstyles.active});
         this.setState({className: "active"});
     }
 
     blurFocus() {
+        //this.setState({className: this.state.value ? mdbstyles.active : ""});
         this.setState({className: this.state.value ? "active" : ""});
     }
 
     render() {
         return (
-            <div className="md-form form-sm">
+            // Without CSS Modules
+            <div className="md-form form-sm" sstyle={{border: "3px dashed red"}}>
                 <i className="grey-text"></i>
-                <input type="text" id={this.props.id} value={this.props.value} onFocus={this.activeFocus} onBlur={this.blurFocus} onChange={this.inputChanged} className="form-control" />
+                <input 
+                    type={this.props.type} 
+                    id={this.props.id} 
+                    value={this.props.value} 
+                    onFocus={this.activeFocus} 
+                    onBlur={this.blurFocus} 
+                    onChange={this.inputChanged} 
+                    className="form-control" 
+                    sstyle={{border: "3px dashed blue", width: "100%"}} />
                 <label htmlFor={this.props.id} className={this.state.className}>{this.props.name}</label>
             </div>
+
+            // With CSS Modules
+            // <div className={`${mdbstyles["md-form"]} ${mdbstyles["form-sm"]}`} sstyle={{border: "3px dashed red"}}>
+            //     <i className={`${mdbstyles["grey-text"]}`}></i>
+            //     <input 
+            //         type={this.props.type} 
+            //         id={this.props.id} 
+            //         value={this.props.value} 
+            //         onFocus={this.activeFocus} 
+            //         onBlur={this.blurFocus} 
+            //         onChange={this.inputChanged} 
+            //         className={`${bootstyles["form-control"]}`} 
+            //         sstyle={{border: "3px dashed blue", width: "100%"}} />
+            //     <label htmlFor={this.props.id} className={this.state.className}>{this.props.name}</label>
+            // </div>
         );
     }
 }

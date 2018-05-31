@@ -1,0 +1,42 @@
+{
+    "chart": {
+        "polar": true,
+        "type": "line",
+        "reflow": true,
+        "height": 200
+    },
+    "title": {
+        "text": "Top 6 Networks By ${metric}",
+        "x": 0
+    },
+    "pane": {
+        "size": "85%"
+    },
+    "xAxis": {
+        "categories": [],
+        "tickmarkPlacement": "on",
+        "lineWidth": 0
+    },
+    "yAxis": {
+        "gridLineInterpolation": "polygon",
+        "lineWidth": 0,
+        "min": 0
+    },
+    "tooltip": {
+        "shared": true,
+        "pointFormat": "<span style='color:{series.color}'>{series.name}: <b>${point.y:,.2f}</b><br/>"
+    },
+    "legend": {
+        "enabled": false,
+        "align": "right",
+        "verticalAlign": "top",
+        "y": 70,
+        "layout": "vertical"
+    },
+    "series": [{
+        "name": ".", 
+        "data": [],
+        "pointPlacement": "on"
+    }]
+}
+  

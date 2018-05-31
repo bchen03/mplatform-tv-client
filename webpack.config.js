@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 //const MiniCssExtractPlugin = require("mini-css-extract-plugin");    // Replaces ExtractTextPlugin
@@ -119,39 +120,67 @@ var config = {
             //         }
             //     ]
             // },
+            // {
+            //     test: /\.css$/, // From https://github.com/css-modules/webpack-demo
+            //     //exclude: /node_modules/,
+            //     //exclude: fs.realpathSync("./node_modules/react-bootstrap-table/css"),
+            //     loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' 
+            // },            
             {
-                test: /\.css$/,
+                test: /\.css$/, 
                 // can't include/exclude, won't compile
-                use: [ "style-loader", "css-loader" ] 
+                // include: fs.realpathSync("./node_modules/react-bootstrap-table/css"),
+                 use: [ "style-loader", "css-loader" ] 
+                //loader: 'style-loader!css-loader' 
             },
-            { 
-                test: /\.scss$/,  
-                // test: /\.(css|scss)$/,
-                include: SRC_DIR,
-                exclude: /node_modules/,
-                // use: [           // css-loader options on one line
-                //     "style-loader", 
-                //     "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap&-minimize", 
-                //     "sass-loader"
-                // ],
-                use: [              // css-loader options individually
-                    { 
-                        loader: "style-loader" 
-                    },
-                    { 
-                        loader: "css-loader",
-                        options: {
-                            sourceMap: true,
-                            // CSS modules support
-                            modules: true,
-                            localIdentName: "[local]___[hash:base64:5]"
-                            //localIdentName: "[name]__[local]___[hash:base64:5]"
-                        }
-                    },
-                    {
-                        loader: "sass-loader"
-                    }
+            {
+                test: /^((?!\.?global).)*scss$/,  // SCSS modules support - 'global' is NOT in filename
+                include: SRC_DIR,                
+                use: [           
+                    "style-loader", 
+                    "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap&-minimize", 
+                    "sass-loader"
                 ]
+            },
+            {
+                test: /\.?global.scss$/,  // skip SCSS modules support - 'global' is in filename
+                include: SRC_DIR,                
+                use: ["style-loader", "css-loader", "sass-loader"]
+            },
+
+            // { 
+            //     test: /\.scss$/,  
+            //     // test: /\.(css|scss)$/,
+            //     include: SRC_DIR,
+            //     //include: [SRC_DIR, /node_modules/],
+            //     //exclude: /node_modules/,
+            //     // use: [           // css-loader options on one line
+            //     //     "style-loader", 
+            //     //     "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap&-minimize", 
+            //     //     "sass-loader"
+            //     // ],
+            //     use: [              // css-loader options individually
+            //         { 
+            //             loader: "style-loader" 
+            //         },
+            //         { 
+            //             loader: "css-loader",
+            //             options: {
+            //                 sourceMap: true,
+            //                 importLoaders: 1,
+            //                 // CSS modules support
+            //                 modules: true,
+            //                 //localIdentName: "[local]___[hash:base64:5]"
+            //                 localIdentName: "[name]__[local]___[hash:base64:5]"
+            //             }
+            //         },
+            //         {
+            //             loader: "sass-loader"
+            //             // options: {
+            //             //     includePaths: [SRC_DIR, /node_modules/]
+            //             // }
+            //         }
+            //     ]
                 //test: /\.scss$/,  // Without CSS modules support
                 //use: ["style-loader", "css-loader", "sass-loader"],
                 // use: ExtractTextPlugin.extract({
@@ -165,7 +194,7 @@ var config = {
                 //     //'postcss-loader',
                 //     'sass-loader'
                 // ]
-            },
+            //},
             { 
                 test: /\.json$/, 
                 loader: 'json-loader' 

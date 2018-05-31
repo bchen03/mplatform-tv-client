@@ -6,12 +6,12 @@ html, body {
 }
 
 select {
-    //width: 8em;
+    width: 8em;
 }
 
-// .app {
+/* // .app {
 //     border: 3px dashed cyan;
-// }
+// } */
 
 .header {
     border: 1px solid #f5f5f5;
@@ -47,32 +47,32 @@ select {
     border: 1px solid #e3e3e3;
     border-radius: 4px;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-    // min-width: 100px;
+    /* min-width: 100px; */
 }
 
 .content {
-    // /* border: 3px dashed red; */
+    /* border: 3px dashed red; */
     margin: 2em 2em 2em 0;
 }
 
 .top6 {
-    // border: 3px dashed lightpink; 
+    /* border: 3px dashed lightpink;  */
     padding-bottom: 1.5em;
 }
 
 .top6Metrics {
-    // border: 3px dashed lightpink; 
+    /* border: 3px dashed lightpink;  */
     text-align: center;
     padding: .5em;
 }
 
 .top6Metricby1 {
-    // border: 3px dashed lightblue;
+    /* border: 3px dashed lightblue; */
     padding: .5em;
 }
 
 .top6Metricby2 {
-    // border: 3px dashed lightgreen;
+    /* border: 3px dashed lightgreen; */
     padding: .5em;
 }
 
@@ -92,7 +92,7 @@ select {
 }
 
 .chart {
-    // background-color: lemonchiffon; 
+    /* // background-color: lemonchiffon;  */
     position: relative;
     width: 100%;
     height: calc(400px + .5em);
@@ -105,7 +105,7 @@ select {
 }
 
 .grid {
-    // background-color: lime; 
+    /* // background-color: lime;  */
     position: relative;
     width: 100%;
     height: calc(400px + .5em);
@@ -117,69 +117,50 @@ select {
     width: 100%;
 }
 
-// Do expand/collapse transition
-.ata-collapse, .collapse {
-    // border: 3px dashed green;
-    overflow: hidden;
-    transition: height .4s ease-out;
-}
-
 #udemo, #hdemo {
-    //margin-bottom: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 #category {
-    // margin-left: .5em;
+    margin-left: .5em;
 }
 
 #category, #range {
-    //width: 8em;
-    // margin: .5em .5em;
+    width: 8em;
+    margin: .5em .5em;
 }
 
 #ata {
-    // margin-top: 1em;
-    // margin-bottom: 1.8em;
-}
-
-#account {
-
-}
-
-#advertiser {
-
-}
-
-#advancedtargetaudience {
-
+    margin-top: 1em;
+    margin-bottom: 1.8em;
 }
 
 #startrange, #endrange {
-    //width: 8em;
-    // margin-left: .5em;
-    // margin-right: .5em;
+    width: 8em;
+    margin-left: .5em;
+    margin-right: .5em;
 }
 
 #daypartfilter {
-    // margin-top: 1em;
-    // margin-bottom: 1.8em;
-    // margin-left: .5em;
-    //width: 16em;
+    margin-top: 1em;
+    margin-bottom: 1.8em;
+    margin-left: .5em;
+    width: 16em;
 }
 
 input + label {
-    // margin-left: 1em;
+    margin-left: 1em;
 }
 
 .helptext {
-    // margin: .5em 0;
+    margin: .5em 0;
 }
 
 
 @media all and (min-width: 768px) {
 
     .main {
-        // border: 3px dashed red; 
+        /* // border: 3px dashed red;  */
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
