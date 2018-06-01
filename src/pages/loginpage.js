@@ -5,13 +5,13 @@ import axios from 'axios';
 
 import MdbInput from '../components/mdbinput';
 
-import 'mdbootstrap/css/bootstrap.min.css';
-import 'mdbootstrap/css/mdb.min.css';
+// import 'mdbootstrap/css/bootstrap.min.css';
+// import 'mdbootstrap/css/mdb.min.css';
 
-import bootstyles from 'mdbootstrap/css/bootstrap.min.css';
-console.log("loginpage bootstyles: ", bootstyles);
-import mdbstyles from 'mdbootstrap/css/mdb.min.css';
-console.log("loginpage mdbstyles: ", mdbstyles);
+// import bootstyles from 'mdbootstrap/css/bootstrap.min.css';
+// console.log("loginpage bootstyles: ", bootstyles);
+// import mdbstyles from 'mdbootstrap/css/mdb.min.css';
+// console.log("loginpage mdbstyles: ", mdbstyles);
 
 
 class LoginPage extends React.Component {

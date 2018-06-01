@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import bootstyles from 'mdbootstrap/css/bootstrap.min.css';
-console.log("mdbinput bootstyles: ", bootstyles);
-import mdbstyles from 'mdbootstrap/css/mdb.min.css';
-console.log("mdbinput mdbstyles: ", mdbstyles);
+// import bootstyles from 'mdbootstrap/css/bootstrap.min.css';
+// console.log("mdbinput bootstyles: ", bootstyles);
+// import mdbstyles from 'mdbootstrap/css/mdb.min.css';
+// console.log("mdbinput mdbstyles: ", mdbstyles);
 
 
 // Component work-around for a bug in MDB inputs where 
