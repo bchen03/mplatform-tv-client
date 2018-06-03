@@ -64,7 +64,10 @@ if (isProduction) {
 }
 
 var config = {
-    entry: SRC_DIR + "/index.js",
+    entry: [
+        'babel-polyfill',
+        SRC_DIR + "/index.js"
+    ],
     devtool: isProduction ? "" : "source-map",
     output: {
         path: DIST_DIR,
