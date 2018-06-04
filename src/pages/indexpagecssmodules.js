@@ -14,8 +14,8 @@ import { setChart, setData, setTop6Chart } from '../utils/chart';
 //import logo from './logo.svg';
 
 // With CSS modules support
-import indexstyles from '../css/indexpage.scss';
-//import indexstyles from '../css/indexpage.css';
+//import indexstyles from '../css/indexpage.scss';
+import indexstyles from '../css/indexpage.css';
 console.log("indexstyles: ", indexstyles);
 
 import metrictemplate from '../json/metrictemplate.json'; 
@@ -510,6 +510,8 @@ class Collapsible extends React.Component {
         const newStyle = {
             height: `${currentHeight > 0 ? "calc(" + currentHeight + "px + 1em" : "0"}` 
         };
+
+        console.log("Collapsible newStyle: ", newStyle);
 
         return (
             <div className={`${indexstyles["collapse"]}`} style={newStyle}>

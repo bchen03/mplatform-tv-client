@@ -123,19 +123,26 @@ var config = {
             //         }
             //     ]
             // },
-            // {
-            //     test: /\.css$/, // From https://github.com/css-modules/webpack-demo
-            //     //exclude: /node_modules/,
-            //     //exclude: fs.realpathSync("./node_modules/react-bootstrap-table/css"),
-            //     loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' 
-            // },            
+            // CSS Modules
+            // I was defining include/exclude incorrectly by using /node_modules/ instead of the SRC_DIR,
+            // below works correctly.
             {
-                test: /\.css$/, 
-                // can't include/exclude, won't compile
-                // include: fs.realpathSync("./node_modules/react-bootstrap-table/css"),
-                 use: [ "style-loader", "css-loader" ] 
-                //loader: 'style-loader!css-loader' 
+            test: /\.css$/,
+            include: SRC_DIR,
+            loaders: [
+                'style-loader',
+                "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap&-minimize", 
+                // 'postcss-loader'
+            ]
             },
+            {
+            test: /\.css$/,
+            exclude: SRC_DIR,
+            loaders: [
+                'style-loader',
+                'css-loader'
+            ]
+            },            
             {
                 test: /^((?!\.?global).)*scss$/,  // SCSS modules support - 'global' is NOT in filename
                 include: SRC_DIR,                
@@ -150,7 +157,6 @@ var config = {
                 include: SRC_DIR,                
                 use: ["style-loader", "css-loader", "sass-loader"]
             },
-
             // { 
             //     test: /\.scss$/,  
             //     // test: /\.(css|scss)$/,

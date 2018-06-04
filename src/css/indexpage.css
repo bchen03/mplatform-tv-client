@@ -117,43 +117,62 @@ select {
     width: 100%;
 }
 
+/* Do expand/collapse transition */
+.ata-collapse, .collapse {
+    /* border: 3px dashed green; */
+    overflow: hidden;
+    transition: height .4s ease-out;
+}
+
 #udemo, #hdemo {
-    margin-bottom: 1.5em;
+    /* margin-bottom: 1.5em; */
 }
 
 #category {
-    margin-left: .5em;
+    /* margin-left: .5em; */
 }
 
 #category, #range {
-    width: 8em;
-    margin: .5em .5em;
+    /* width: 8em;
+    margin: .5em .5em; */
 }
 
 #ata {
-    margin-top: 1em;
-    margin-bottom: 1.8em;
+    /* margin-top: 1em;
+    margin-bottom: 1.8em; */
+}
+
+#account {
+
+}
+
+#advertiser {
+
+}
+
+#advancedtargetaudience {
+
 }
 
 #startrange, #endrange {
-    width: 8em;
+    /* width: 8em;
     margin-left: .5em;
-    margin-right: .5em;
+    margin-right: .5em; */
 }
 
 #daypartfilter {
-    margin-top: 1em;
+    /* margin-top: 1em;
     margin-bottom: 1.8em;
     margin-left: .5em;
-    width: 16em;
+    width: 16em; */
 }
 
 input + label {
-    margin-left: 1em;
+    /* margin-left: 1em; */
 }
 
 .helptext {
-    margin: .5em 0;
+    /* margin: .5em 0; */
 }
 
 
