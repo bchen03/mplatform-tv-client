@@ -25,11 +25,11 @@ var plugins =  [
         hash: true   // Adds hash as query parameter
     }),
     new webpack.ProvidePlugin({
-    //     _: 'lodash'
-    //     $: 'jquery',
-    //     jQuery: 'jquery',
-    //     'window.jQuery': 'jquery',
-    //     Popper: ['popper.js', 'default']
+        //  _: 'lodash',
+        //  $: 'jquery',
+        //  jQuery: 'jquery',
+        //  'window.jQuery': 'jquery',
+        //  Popper: ['popper.js', 'default']
     //     // In case you imported plugins individually, you must also require them here:
     //     //Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
      }),

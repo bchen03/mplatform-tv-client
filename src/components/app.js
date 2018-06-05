@@ -15,6 +15,7 @@ import HomePage from "../pages/homepage";
 import IndexPage from "../pages/indexpage";
 import IndexPageBootstrap from "../pages/indexpagebootstrap";
 import IndexPageCss from "../pages/indexpagecssmodules";
+import IndexPageCollapse from "../pages/indexpagecollapse";
 import ReduxPage from "../pages/reduxpage";
 
 //import {MessageHoc, ColorHoc, PaymentView} from './recompose';
@@ -29,6 +30,7 @@ const App = (props) => {
                     <Route path="/index" component={IndexPage}/>
                     <Route path="/indexbs" component={IndexPageBootstrap}/>
                     <Route path="/indexcss" component={IndexPageCss}/>
+                    <Route path="/indexcollapse" component={IndexPageCollapse}/>
                     <Route path="/reduxform" component={ReduxPage}/>
                     <Redirect to="/" />
                 </Switch>
