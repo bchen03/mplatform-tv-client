@@ -124,7 +124,7 @@ select {
     transition: height .4s ease-out;
 }
 
-#udemo, #hdemo {
+#idemo, #udemo, #hdemo {
     /* margin-bottom: 1.5em; */
 }
 
@@ -173,6 +173,26 @@ input + label {
 
 .helptext {
     /* margin: .5em 0; */
+}
+
+/* Draw line after text that's responsive and stays on the same line */
+.sectionTitle {
+    color: rgba(128,128,128,0.8);
+    font-weight: bold;
+    font-size: 1.3em;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sectionTitle:after {
+    content: '';
+    display: inline-block;
+    border-top: 1px solid rgb(128, 128, 128, 0.2);
+    width: 100%;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-right: -100%;
+
 }
 
 

@@ -327,6 +327,11 @@ class SelectionPanel extends React.Component {
                         </div>
                     </div>
                     <div className="form-group">
+                        <div className={indexstyles.sectionTitle}>
+                            Demo
+                        </div>
+                    </div>
+                    <div className="form-group">
                         <div className="form-check">
                             <input type='radio' className="form-check-input" id={indexstyles.idemo} name='demo' value="individual" />
                             <label htmlFor={indexstyles.idemo} className="form-check-label">Individual Demographics</label>          
@@ -337,7 +342,10 @@ class SelectionPanel extends React.Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <h4><strong>Cross-media Demographics</strong></h4>
+                        {/* <h4><strong>Cross-media Demographics</strong></h4> */}
+                        <div className={indexstyles.sectionTitle}>
+                            Cross-media Demographics
+                        </div>
                     </div>
                     <div className="form-group">
                         <div className="row">
@@ -408,7 +416,10 @@ class SelectionPanel extends React.Component {
                     {/* ATA toggle transition using Collapsible render prop */}
                     <Collapsible isExpanded={this.state.isAtaExpanded}>
                         <div className="form-group">
-                            <h4><strong>Advanced Target Audience</strong></h4>
+                            {/* <h4><strong>Advanced Target Audience</strong></h4> */}
+                            <div className={indexstyles.sectionTitle}>
+                                Advanced Target Audience
+                            </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor={indexstyles.account}>Account</label>          
